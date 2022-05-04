@@ -6,12 +6,6 @@ const questions = new Map([
   [2, "What level of threat are you reporting? (Low/Medium/High)"]
 ]);
 
-let questionsToAnswers = new Map([
-  [0, "Random"],
-  [1, "Random"],
-  [2, "Random"]
-]);
-
 function display() {
   document.getElementById('question').innerHTML = questions.get(question);
 }
@@ -23,7 +17,6 @@ function addResponse() {
 
   if (question < 3) {
     let response = document.getElementById('input').value;
-    questionsToAnswers.set(question, response);
     localStorage.setItem(question, response);
     question++;
     document.getElementById('input').value = "";
@@ -87,7 +80,6 @@ if (nameInput) {
 
 function displayQuestionsAndAnswers() {
   let pointer = 0;
-  console.log(questionsToAnswers.get(pointer));
 
   document.getElementById('firstQuestion').innerHTML = questions.get(pointer);
   document.getElementById('firstAnswer').innerHTML = localStorage.getItem(pointer);
